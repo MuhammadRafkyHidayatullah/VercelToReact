@@ -1,10 +1,12 @@
 import React, {Suspense} from "react"
-import {BrowserRouter as Router,Routes,Route,NavLink} from "react-router-dom"
+import {BrowserRouter as Router,Routes,Route, NavLink} from "react-router-dom"
 
 
-const Home = React.lazy( () => import("./components/Home"))
-const FakultasList = React.lazy ( () => import("./components/Fakultas/list"))
-const ProdiList = React.lazy ( () => import("./components/Prodi/List"))
+const Home = React.lazy( () => import("./components/Home"));
+const FakultasList = React.lazy ( () => import("./components/Fakultas/List"));
+const FakultasCreate = React.lazy( () => import("./components/Fakultas/Create"));
+const ProdiList = React.lazy ( () => import("./components/Prodi/List"));
+const ProdiCreate = React.lazy ( () => import("./components/Prodi/Create"))
 
 function App() {
   return(
@@ -39,7 +41,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/fakultas" element={<FakultasList/>}/>
+          <Route path="/fakultas/create" element={<FakultasCreate/>}/>
           <Route path="/prodi" element={<ProdiList/>}/>
+          <Route path="/prodi/create" element={<ProdiCreate/>}/>
         </Routes>
       </Suspense>
     </Router>
