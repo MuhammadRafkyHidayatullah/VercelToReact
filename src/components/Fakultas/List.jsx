@@ -28,8 +28,11 @@ export default function List(){
 
             <ul className="list-group">
                 {fakultas.map((f) =>(
-                        <li key={f.id} className="list-group-item">
-                            {f.nama}
+                        <li key={f.id} className="list-group-item d-flex justify-content-between align-item-center">
+                            <span>{f.nama}</span>{/* Menampilkan nama Fakultas */}
+                            <NavLink to={`/fakultas/edit/${f.id}`} className="btn btn-warning">
+                                Edit
+                            </NavLink>
                         </li>
                 ))}
             </ul>
