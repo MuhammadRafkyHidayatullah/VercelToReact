@@ -5,13 +5,15 @@ import { useParams, useNavigate } from "react-router-dom";
 export default function Edit(){
     const { id } = useParams();
     const navigate = useNavigate();
-    const {nama, setNama} = useState("");
-    const {error, setError} = useState(null);
+    const [nama, setNama] = useState("");
+    const [error, setError] = useState(null);
 
     //mengambil Data Fakultas Berdasar id Ketika Komponen Pertamakali Dimuat
     useEffect(() => {
         axios.get(`https://project-pw-2-vbnt.vercel.app/api/api/fakultas/${id}`)//Mengirimkan Request Get untuk Mendapatkan dara Fakultas BEradasrkan ID
         .then((response) => {
+            console.log(response.data.result.nama);
+            
             setNama(response.data.result.nama);
         })
         .catch((error) =>{
@@ -43,9 +45,9 @@ export default function Edit(){
             {error && <p className="text-danger">{error}</p>} {/* Menampilakan Pesan Error Jika ada */}
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
-                    <lable htmlFor="nama" className="form-lable">
+                    <label htmlFor="nama" className="form-lable">
                         Nama Fakultas
-                    </lable>
+                    </label>
                     <input
                     type="text"
                     className="from-control"

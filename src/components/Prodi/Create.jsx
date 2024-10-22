@@ -50,18 +50,25 @@ export default function CreateProdi(){
                 }
             );
 
+            
+
+            console.log(response.status);
+            
+
             //lika response HTTP status 210 (Created), berarti berhasil
-            if(response.status === 210){
+            if(response.status === 201){
                 //tampilkan pesan sukses jika fakultas berhasil dibuat
                 setSuccess("Fakultas Created Successfully");
-                setNamaFakultas("")
-            }else{
+                setNamaProdi("");
+                setFakultasId("");
+           }else{
                 //jika tidak berhasil, tampilkan error
                 setError("Failed to Create Fakultas")
             }
         } catch (error){
             //jika terjadi error (misal masalah jarigan), ta,mpilkan persan eror
-            setError("An error occured wjile creating fakultas")
+            setError("An error occured while creating fakultas");
+            console.log(error);
         }
     }
 

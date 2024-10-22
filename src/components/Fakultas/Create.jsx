@@ -28,8 +28,11 @@ export default function CreateFakultas() {
                 }
             );
 
+            console.log(response.status);
+            
+
             //lika response HTTP status 210 (Created), berarti berhasil
-            if(response.status === 210){
+            if(response.status === 201){
                 //tampilkan pesan sukses jika fakultas berhasil dibuat
                 setSuccess("Fakultas Created Successfully");
                 setNamaFakultas("")
