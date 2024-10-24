@@ -3,6 +3,9 @@ import axios from "axios";
 import { useEffect } from "react";
 
 export default function CreateProdi(){
+    //Ambil token dari local storage
+    // const token = localStorage.getItem("authToken");
+
     //inisialisasi state untuk menyimpan nama Prodi
     const [namaProdi, setNamaProdi] = useState(" ");
     //inisialisasi state untukmenyimpan id fakultas yang telah di pilih
@@ -48,6 +51,12 @@ export default function CreateProdi(){
                     nama: namaProdi,
                     fakultas_id: fakultasId
                 }
+                //, {
+                //     headrs: {
+                //         Authorization: `Bearer ${token}`,
+                //         Accept: `applocation/json`
+                //     }
+                // }
             );
 
             

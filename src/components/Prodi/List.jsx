@@ -17,7 +17,31 @@ export default function List(){
         });
     }, []);
     
-
+const handleDelete = (id, nama) => {
+        Swal.fire({
+            title: 'Are You Sure?',
+            text: `you Won't be Able to Revert This! Fakultas: ${nama}`,
+            icon: "warning",
+            showCancelButton: true, confirmButtonColor: `#00ffee`, cancelButtonColor: "#d33",
+            confirmButtonText: "Yes! Delete it!",
+        }).then((result) => {
+            if(result.isConfirmed){
+                axios.delete(`https://project-pw-2-vbnt.vercel.app/api/api/prodi/${id}`)
+                .then((response) => {
+                    setFakultas(fakultas.filter((f)=> f.id !==id));
+                    Swal.fire("Deleted!", "Your Data Has Been Deleted", "Success");
+                })
+                .catch((error)=>{
+                    console.error("Error deleting data:", Error);
+                    Swal.fire(
+                        "Error",
+                        "There was An issue Deleting The Data",
+                        "error"
+                    );
+                });
+            }
+        });
+    }
 
 
     return(
